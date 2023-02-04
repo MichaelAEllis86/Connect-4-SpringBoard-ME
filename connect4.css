@@ -1,0 +1,87 @@
+
+body{
+  background-color:black;
+  background-image:url(C:\Users\mooks\Downloads\WallpaperDog-10700175.jpg);
+}
+
+h1{
+  color: orange;
+  font-family: 'Creepster', cursive;
+  font-size: 48px;
+  -webkit-text-stroke: 2px black;
+  display: flex;
+  justify-content: left;
+  
+}
+
+h3{
+  color: orange;
+  font-family: 'Creepster', cursive;
+  font-size: 48px;
+  -webkit-text-stroke: 2px black;
+
+}
+
+#game{
+margin: auto;
+height: 500px;
+width: 500px;
+}
+
+/* game board table */
+
+#board td {
+  width: 50px;
+  height: 50px;
+  border: solid 2px #666;
+}
+
+/* pieces are div within game table cells: draw as colored circles */
+
+.piece {
+  /* TODO: make into circles (done used border radius) */ 
+  margin: 5px;
+  width: 80%;
+  height: 80%;
+  border-radius:50%;
+  background-color: black;
+  
+}
+
+/* TODO: make pieces red/blue,  depending on player 1/2 piece (done) */
+.player1 {
+  /* background-color:orange; */
+  background-color: #b64d00;
+}
+
+.player2 {
+  background-color:#1D4705;
+
+}
+
+/* column-top is table row of clickable areas for each column */
+
+#column-top td {
+  border: dashed 1px lightgray;
+}
+
+#column-top td:hover {
+  background-color:orange;
+}
+
+.playAgainButton{
+  width: 200px;
+  height: 100px;
+  background-color: red;
+  border: 20px, blue;
+  border-radius:12.5px; 
+  font-size: 40px;
+  -webkit-text-stroke: 4px black;
+  color: green;
+  font-family: 'Creepster', cursive;
+  
+}
+
+.playAgainButton:hover{
+  background-color:orange;
+}
