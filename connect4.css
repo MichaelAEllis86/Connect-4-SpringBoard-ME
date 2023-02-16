@@ -1,7 +1,6 @@
 
 body{
   background-color:black;
-  background-image:url(C:\Users\mooks\Downloads\WallpaperDog-10700175.jpg);
 }
 
 h1{
@@ -48,7 +47,7 @@ width: 500px;
   
 }
 
-/* TODO: make pieces red/blue,  depending on player 1/2 piece (done) */
+/* TODO: make pieces red/blue,  depending on player 1/2 piece (done) made these orange and green cause of the halloween theme */ 
 .player1 {
   /* background-color:orange; */
   background-color: #b64d00;
