@@ -13,18 +13,21 @@ let currentPlayer =1; // active player: 1 or 2
 let board = []; // array of rows, each row is array of cells  (board[y][x])
 
 
-  function makeBoard() { //generates board variable in memory to an array with 6 subarrays with 7 properties within each subarray
+  function makeBoard() { //generates board variable in JS memory to an array with 6 subarrays with 7 properties within each subarray. Each y is an array, each x is an array with 7 empty slots
   for(let y=0; y<HEIGHT; y++){
-    board.push(Array.from ({length:WIDTH}))
+    for(let x=0; x<WIDTH; x++){
+      board.push([undefined,undefined,undefined,undefined,undefined,undefined,undefined])
+    }
+    // board.push(Array.from ({length:WIDTH}))
 
     //  board.push([null,null,null,null,null,null,null]) //my not so elegant solution
-    // QUESTION#1 board.push(Array.from ({length:WIDTH})) Springboard's answer, not sure how it works! ASK!!!
+    // QUESTION#1 board.push(Array.from ({length:WIDTH})) Springboard's answer, not sure how it works! ASK!!! using array.from to make an array where were assigning the length to the width constant, just don't quite understand the syntax
   }
 }
 
 function makeHtmlBoard() {
   // TODO: add comment for this code (DONE)
-  // this code generates the html game board! First it generates a top table row (tr element) with the ID of column-top. it also adds an eventlistener to this top collumn that will 
+  // this code generates the html game board! First it generates a top table row (tr element) with the ID of column-top. it also adds an eventlistener to this top column that will 
   //be the method we use to play a game piece.
 
   let htmlBoard=document.getElementById('board')
@@ -33,7 +36,7 @@ function makeHtmlBoard() {
   top.addEventListener("click", handleClick);
 
 // loops/iterates through the top collumn and generates 7 TD's (using the width constant) to make individual cells within the top row (variable top)
-//for each TD created by this loop, we set the ID to be x (which will just be the loop increment/number 0-6). These cells are then appended to TOP AKA the table row with the evt listener. 
+//for each TD created by this loop, we set the ID to be x (which will just be the loop increment/number 0-6). These cells are then appended to the TOP variable AKA the table row with the evt listener. 
 //Lastly we append the top row to the htmlBoard DIV. In total, we added a top table tow to the Html board div with an ID number 1-6 with a click event listener
 
   for (let x = 0; x < WIDTH; x++) {
@@ -131,7 +134,7 @@ function handleClick(evt) {
   board[y][x]=currentPlayer //updates board variable
   placeInTable(y, x);
 
-  // check for win (Question should I have written another function to append the playAgain button to the DOM)
+  // check for win (Question should I have written another function to append the playAgain button to the DOM) nevermind i did it anyways
   if (checkForWin()) {
     let htmlBoard=document.getElementById('board')
     let playAgainButton=document.createElement('button')
@@ -206,16 +209,18 @@ function checkForWin() {
     );
   }
 
-  // TODO: read and understand this code. Add comments to help you.
+  // TODO: read and understand this code. Add comments to help you. nested for loop! for every Y column we check the x array's with in it for a win. There are 4 ways to win, if one line up 4 
+  // horiz, vert, diagonal right or diagonal left. we then check if a certain player fills the right y,x combinations to fill these. For horizontal wins at a starting point X , 4 in a row would be X, X+1, x+2 etc, 
+  //so if a given set of arrays evaulates positive to a player that is a horiz win. 
 
-  for (let y = 0; y < HEIGHT; y++) { // for every 
+  for (let y = 0; y < HEIGHT; y++) { 
     for (let x = 0; x < WIDTH; x++) {
       let horiz = [[y, x], [y, x + 1], [y, x + 2], [y, x + 3]];
       let vert = [[y, x], [y + 1, x], [y + 2, x], [y + 3, x]];
       let diagDR = [[y, x], [y + 1, x + 1], [y + 2, x + 2], [y + 3, x + 3]];
       let diagDL = [[y, x], [y + 1, x - 1], [y + 2, x - 2], [y + 3, x - 3]];
 
-      if (_win(horiz) || _win(vert) || _win(diagDR) || _win(diagDL)) {
+      if (_win(horiz) || _win(vert) || _win(diagDR) || _win(diagDL)) { // this code is a bunch of OR statments since there are 4 possibly win conditions. if any are met we return true on checkForWin
         return true;
       }
     }
