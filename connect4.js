@@ -15,15 +15,13 @@ let board = []; // array of rows, each row is array of cells  (board[y][x])
 
   function makeBoard() { //generates board variable in JS memory to an array with 6 subarrays with 7 properties within each subarray. Each y is an array, each x is an array with 7 empty slots
   for(let y=0; y<HEIGHT; y++){
-    for(let x=0; x<WIDTH; x++){
-      board.push([undefined,undefined,undefined,undefined,undefined,undefined,undefined])
+    board.push([undefined,undefined,undefined,undefined,undefined,undefined,undefined])
+  }
     }
     // board.push(Array.from ({length:WIDTH}))
 
     //  board.push([null,null,null,null,null,null,null]) //my not so elegant solution
     // QUESTION#1 board.push(Array.from ({length:WIDTH})) Springboard's answer, not sure how it works! ASK!!! using array.from to make an array where were assigning the length to the width constant, just don't quite understand the syntax
-  }
-}
 
 function makeHtmlBoard() {
   // TODO: add comment for this code (DONE)
@@ -146,13 +144,13 @@ function handleClick(evt) {
     return endGame(`Player ${currentPlayer} won!`);
   }
 
+  
   // check for tie
   // TODO: check if all cells in board are filled; if so call, call endGame
 
+  
   // switch players
   // TODO: switch currentPlayer 1 <-> 2
-
-
 currentPlayer =currentPlayer===1 ? 2 : 1 
 let playerHTML=document.getElementById("current-player")
 if (currentPlayer===1){
@@ -162,19 +160,7 @@ if (currentPlayer===1){
 else{playerHTML.innerText=' Player 2'
 playerHTML.style.color='green'
 }
-  // if(currentPlayer==='player1'){
-  //   let playerHTML=document.getElementById("current-player")
-  //   currentPlayer==='player2'
-  //   playerHTML.innerText='2'
-  // }
-  // if(currentPlayer==='player2'){
-  //   let playerHTML=document.getElementById("current-player")
-  //   currentPlayer==='player1'
-  //   playerHTML.innerText='1'
-  // }
-  
-  
-  
+
 }
 //handles the play again functionality. resets board memory, resets html, regenerates table.
 function resetBoard(evt){
@@ -226,6 +212,9 @@ function checkForWin() {
     }
   }
 }
+
+
+
 
 makeBoard();
 makeHtmlBoard();
